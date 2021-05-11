@@ -1,15 +1,3 @@
-#!/bin/python3
-
-#################################################
-#                                               #
-# Dependencies:                                 #
-#       pip install xmltodict                   #
-#                                               #
-# How to run:                           		#
-#       ./converter.py input.xml output.json	#
-#                                               #
-#################################################
-
 import sys
 import json
 import xmltodict

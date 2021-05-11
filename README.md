@@ -12,7 +12,7 @@ When the *-u* flag is set, nmap run with the following parameters:
 
 	nmap -Pn -sS -sU -sV -O -T5 -oX output IP
 	
-If you wanna change this nmap parameters, change the file **summarize.sh**.
+If you wanna change this nmap parameters, change the file **summarize.sh**. This is an work in progress and many adjusts may be necessary. Feel free to collaborate.
 	
 ## Install 
 

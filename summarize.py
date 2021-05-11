@@ -1,15 +1,6 @@
-#!/bin/python3
-
-#################################################
-#                                               #
-# How to run:                                   #
-#       ./save.py *.json >> output.csv        	#
-#                                               #
-#                                               #
-#################################################
-
 import sys
 import json
+
 
 # csv header
 print("IP,SO,PORTA/SERVICO")

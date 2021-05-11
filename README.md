@@ -4,7 +4,7 @@
 
 Script to summarize results of nmap into a .csv file.
 
-The default nmap parameters define to be executed over targets in enumerate process are: 
+The nmap parameters define to be executed over targets in enumerate process are: 
 	
 	nmap -Pn -sV -O -T5 -oX output IP
 	
@@ -14,14 +14,13 @@ When the *-u* flag is set, nmap run with the following parameters:
 	
 If you wanna change this nmap parameters, change the file **summarize.sh**.
 	
-
 ### Install 
 
 #### Clone this repo
 
 	git clone https://github.com/bfleal/nmap-summarize-results.git
 	
-#### (Optional, but recommend) Create and activate a virtual environment
+#### (Optional, but recommended) Create and activate a virtual environment
 
 	virtualenv env
 	env/bin/activate

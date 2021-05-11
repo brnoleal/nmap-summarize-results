@@ -2,7 +2,6 @@ import sys
 import json
 import xmltodict
 
-
 try:
 	# read xml content
 	f = open(sys.argv[1])

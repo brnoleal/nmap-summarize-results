@@ -13,10 +13,6 @@ When the *-u* flag is set, nmap run with the following parameters:
 	nmap -Pn -sS -sU -sV -O -T5 -oX output IP
 	
 If you wanna change this nmap parameters, change the file **summarize.sh**. This is an work in progress and many adjusts may be necessary. Feel free to collaborate.
-
-**Tip**: At first time, run script without -u flag. Performe nmap with UDP enumeration enable can take to long.
-
-**Atention**: The output generated are overwrited every time the script are executed (unless you rename the file or move it to another dir).
 	
 ## Install 
 
@@ -24,14 +20,19 @@ If you wanna change this nmap parameters, change the file **summarize.sh**. This
 
 	git clone https://github.com/bfleal/nmap-summarize-results.git
 	
-#### (Optional, but recommended) Create and activate a virtual environment
-
-	virtualenv env
-	source env/bin/activate
-
 #### Install dependencies 
 
-	pip install -r requirements.txt
+	sudo python3 -m pip install -r requirements.txt
+
+
+#### Errors
+
+If some error like *ImportError: No module named 'xmltodict'* or *AttributeError: module 'lib' has no attribute 'SSL_ST_INIT'* appear, maybe the following sequence of commands fix it.
+
+	sudo python3.5 -m pip install setuptools-rust
+	sudo python3.5 -m pip install pyOpenSSL
+	sudo python3 -m pip install -r requirements.txt
+
 
 ## How to use
 
@@ -40,10 +41,6 @@ If you wanna change this nmap parameters, change the file **summarize.sh**. This
 	sudo ./summarize.sh [-d|-h|-n|-u] -t TARGET
 	
 Sudo is necessary to performe OS discovery with nmap.
-
-#### Output
-
-	summarized_results.csv
 
 #### Arguments
 

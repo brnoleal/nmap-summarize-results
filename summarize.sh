@@ -17,7 +17,7 @@ usage(){
 
 # default parameters
 OUTPUT='./output'
-CHECK_TARGETS_COMMAND='nmapz-sn -n'
+CHECK_TARGETS_COMMAND='nmap -sn -n'
 PORT_SCAN_COMMAND='nmap'
 
 # check if args
@@ -63,25 +63,32 @@ else
 
 	# iterate over each host in hosts_alive list and scan it's services
 	for host in $hosts_alive; do
+		# by default test each host
+		TESTIT=1 
+		
 		# scan
-		echo "[+] scanning ports/services on $host..."
-		eval $PORT_SCAN_COMMAND "-Pn -sV -O -T5 -p- -oX $OUTPUT/$host.xml $TARGET" >/dev/null 2>&1
-		# sudo nmap -Pn -sV -O -T5 -oX "$OUTPUT/$host-tcp.xml" $host -p- >/dev/null 2>&1
+		if [ -f $OUTPUT/$host.xml ]; then
+			read -p "Overwrite $OUTPUT/$host.xml (y/n)?" ANSWER
+			case $ANSWER in 
+				[yY]) TESTIT=1 ;;
+				[nN]) TESTIT=0 ;;
+			esac
+		fi
 
-		# UDP scan
-		# echo "[+] scanning UDP ports in $host..."
-		# nmap -Pn -sU -sV -O -T5 -oX "$OUTPUT/$host-udp.xml" $host -p- >/dev/null 2>&1
+		if [ $TESTIT = 1 ]; then
+			# execute nmap
+			echo "[+] scanning ports/services on $host..."
+			eval $PORT_SCAN_COMMAND "-Pn -sV -O -T5 -p- -oX $OUTPUT/$host.xml $TARGET" >/dev/null 2>&1
+		fi
 
 		# convert .xml files to .json using converter.py script
-		# convert TCP scan results
 		if [ -f "$OUTPUT/$host.xml" ]; then
 			echo "[+] converting $host.xml to .json"
 			python3 converter.py "$OUTPUT/$host.xml" "$OUTPUT/$host.json"
+		else
+			echo "[-] error trying convert $host.xml file"
 		fi
-
-		# convert UDP scan results
-		# python3 converter.py "$OUTPUT/$host-udp.xml" "$OUTPUT/$host-udp.json"
-		# echo "[+] $OUTPUT/$host-udp.xml converted to $OUTPUT/$host-udp.json"
+		
 	done
 
 	# summarize results
@@ -90,6 +97,6 @@ else
 		python3 parser.py "$OUTPUT/"*.json >> "$OUTPUT/summarized_results.csv"
 		echo "[+] done!"
 	else
-		echo "[-] ERROR on summarizing. There is no .json file into $OUTPUT."
+		echo "[-] error trying summarize. Maybe file aren't into $OUTPUT dir."
 	fi
 fi

@@ -14,7 +14,9 @@ When the *-u* flag is set, nmap run with the following parameters:
 	
 If you wanna change this nmap parameters, change the file **summarize.sh**. This is an work in progress and many adjusts may be necessary. Feel free to collaborate.
 
-**TIP**: At first time, run script without -u flag. Performe nmap with UDP enumaration enable can take to long.
+**Tip**: At first time, run script without -u flag. Performe nmap with UDP enumeration enable can take to long.
+
+**Atention**: The output generated are overwrited every time the script are executed (unless you rename the file or move it to another dir).
 	
 ## Install 
 
@@ -38,6 +40,10 @@ If you wanna change this nmap parameters, change the file **summarize.sh**. This
 	sudo ./summarize.sh [-d|-h|-n|-u] -t TARGET
 	
 Sudo is necessary to performe OS discovery with nmap.
+
+#### Output
+
+	summarized_results.csv
 
 #### Arguments
 

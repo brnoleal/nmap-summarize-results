@@ -87,7 +87,7 @@ else
 	# summarize results
 	if [ -f "$OUTPUT/"*.json ]; then
 		echo "[+] summarizing results into $OUTPUT/summarized_results.csv"
-		python3 summarize.py "$OUTPUT/"*.json >> "$OUTPUT/summarized_results.csv"
+		python3 parser.py "$OUTPUT/"*.json >> "$OUTPUT/summarized_results.csv"
 		echo "[+] done!"
 	else
 		echo "[-] ERROR on summarizing. There is no .json file into $OUTPUT."

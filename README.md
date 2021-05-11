@@ -8,11 +8,13 @@ Script to summarize results of nmap into a .csv file.
 
 #### Clone this repo
 
-	git clone
+	git clone https://github.com/bfleal/nmap-summarize-results.git
 
-#### Install ependencies
+#### Install dependencies
 
 	pip install -r requiments.txt
+
+### How to use
 
 #### Syntax
 

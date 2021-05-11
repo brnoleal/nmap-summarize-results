@@ -1,6 +1,6 @@
 # nmap-summarize-results
 
-### Description
+## Description
 
 Script to summarize results of nmap into a .csv file.
 
@@ -14,7 +14,7 @@ When the *-u* flag is set, nmap run with the following parameters:
 	
 If you wanna change this nmap parameters, change the file **summarize.sh**.
 	
-### Install 
+## Install 
 
 #### Clone this repo
 
@@ -29,7 +29,7 @@ If you wanna change this nmap parameters, change the file **summarize.sh**.
 
 	pip install -r requiments.txt
 
-### How to use
+## How to use
 
 #### Syntax
 

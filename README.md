@@ -23,11 +23,11 @@ If you wanna change this nmap parameters, change the file **summarize.sh**.
 #### (Optional, but recommended) Create and activate a virtual environment
 
 	virtualenv env
-	env/bin/activate
+	source env/bin/activate
 
-#### Install dependencies
+#### Install dependencies 
 
-	pip install -r requiments.txt
+	pip install -r requirements.txt
 
 ## How to use
 

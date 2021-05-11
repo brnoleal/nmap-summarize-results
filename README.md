@@ -1,15 +1,22 @@
 # nmap-summarize-results
 
-#### Install dependencies
+### Description
 
-pip install -r requiments.txt
-
-#### Description
 Script to summarize results of nmap into a .csv file.
+
+### Install 
+
+#### Clone this repo
+
+	git clone
+
+#### Install ependencies
+
+	pip install -r requiments.txt
 
 #### Syntax
 
-./summarize.sh [-d|-h|-n|-u] -t TARGET
+	./summarize.sh [-d|-h|-n|-u] -t TARGET
 
 #### Arguments
 

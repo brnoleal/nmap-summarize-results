@@ -104,4 +104,8 @@ else
 	else
 		echo "[-] error trying summarize. Maybe files aren't into $OUTPUT dir."
 	fi
+
+	# give write permissions 
+	chmod o+w -R $OUTPUT
 fi
+ 

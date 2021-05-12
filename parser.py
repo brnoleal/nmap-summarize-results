@@ -3,7 +3,7 @@ import json
 
 
 # csv header
-print("IP,SO,PORTA/SERVICO")
+print("IP,SO,PORTA/SERVICO,VULNERABILIDADES")
 
 # get json file name
 for file in sys.argv[1:]:
@@ -14,7 +14,7 @@ for file in sys.argv[1:]:
 		try:
 			result = json.load(f)
 		except:
-			print("{},Verifique o arquivo .json relacionado a este IP,".format(str(file.split('/')[-1].split('.json')[0])))
+			print("{},Verifique o arquivo .json relacionado a este IP,,".format(str(file.split('/')[-1].split('.json')[0])))
 			continue
 
 		# ip
@@ -65,17 +65,17 @@ for file in sys.argv[1:]:
 					protocol = service['@protocol']
 
 					try:
-						service_name = "({})".format(service['service']['@name'])
+						service_name = " ({})".format(service['service']['@name'])
 					except:
 						service_name = ""
 
 					try:
-						product_name = "- {}".format(service['service']['@product'])
+						product_name = " - {}".format(service['service']['@product'])
 					except:
 						product_name = ""
 
 					#print(f"IP: {ip}\t\tSO: {name} {os_type}\t\tPort: {port}:{protocol} {service_name} {product_name}")
-					print("{},{}{},{}:{} {} {}".format(ip, os_name, os_type, port, protocol, service_name, product_name))
+					print("{},{}{},{}:{}{}{},".format(ip, os_name, os_type, port, protocol, service_name, product_name))
 
 
 			elif type(services) == dict:
@@ -92,9 +92,9 @@ for file in sys.argv[1:]:
 				except:
 					product_name = ""
 
-				print("{},{}{},{}:{} {} {}".format(ip, os_name, os_type, port, protocol, service_name, product_name))
+				print("{},{}{},{}:{}{}{},".format(ip, os_name, os_type, port, protocol, service_name, product_name))
 			else:
-				print("{},{}{},{}".format(ip, os_name, os_type, services))
+				print("{},{}{},{},".format(ip, os_name, os_type, services))
 		except: 
-			print("{},Verifique o arquivo .xml ou .json relacionado a este IP,".format(str(file.split('/')[-1].split('.json')[0])))
+			print("{},Verifique o arquivo .xml ou .json relacionado a este IP,,".format(str(file.split('/')[-1].split('.json')[0])))
 

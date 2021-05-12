@@ -13,6 +13,11 @@ When the *-u* flag is set, nmap run with the following parameters:
 	nmap -Pn -sS -sU -sV -O -T5 -oX output IP
 	
 If you wanna change this nmap parameters, change the file **summarize.sh**. This is an work in progress and many adjusts may be necessary. Feel free to collaborate.
+
+**Tip**: At first time, run script without -u flag. Performe nmap with UDP enumeration enable can take to long.
+
+**Atention**: The output generated are overwrited every time the script are executed (unless you rename the file or move it to another dir).
+
 	
 ## Install 
 

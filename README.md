@@ -16,7 +16,7 @@ If you wanna change this nmap parameters, change the file **summarize.sh**. This
 
 **Tip**: At first time, run script without -u flag. Performe nmap with UDP enumeration enable can take too long.
 
-**Atention**: The output generated are overwrited every time the script are executed (unless you rename the file or move it to another dir).
+**Attention**: The output generated are overwrited every time the script are executed (unless you rename the file or move it to another dir).
 
 	
 ## Install 

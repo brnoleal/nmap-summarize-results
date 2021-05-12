@@ -55,6 +55,10 @@ else
 	# create OUTPUT if not exist
 	[ -d $OUTPUT ] || mkdir -p $OUTPUT
 
+	# create or clean summarized_results.csv file
+	echo "" > $OUTPUT/summarized_results.csv
+
+
 	if [ ! -f $TARGET ]; then
 		hosts_alive=$($CHECK_TARGETS_COMMAND $TARGET | grep report | awk '{print $5}')
 	else
@@ -78,7 +82,7 @@ else
 		if [ $TESTIT = 1 ]; then
 			# execute nmap
 			echo "[+] scanning ports/services on $host..."
-			eval $PORT_SCAN_COMMAND "-Pn -sV -O -T5 -p- -oX $OUTPUT/$host.xml $TARGET" >/dev/null 2>&1
+			eval $PORT_SCAN_COMMAND "-Pn -sV -O -T5 -p- -oX $OUTPUT/$host.xml $host" >/dev/null 2>&1
 		fi
 
 		# convert .xml files to .json using converter.py script
@@ -92,11 +96,12 @@ else
 	done
 
 	# summarize results
-	if [ -f "$OUTPUT/"*.json ]; then
+	count=`ls -1 $OUTPUT/*.json 2>/dev/null | wc -l`
+	if [ $count != 0 ]; then
 		echo "[+] summarizing results into $OUTPUT/summarized_results.csv"
 		python3 parser.py "$OUTPUT/"*.json >> "$OUTPUT/summarized_results.csv"
 		echo "[+] done!"
 	else
-		echo "[-] error trying summarize. Maybe file aren't into $OUTPUT dir."
+		echo "[-] error trying summarize. Maybe files aren't into $OUTPUT dir."
 	fi
 fi

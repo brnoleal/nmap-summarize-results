@@ -29,8 +29,8 @@ If you wanna change this nmap parameters, change the file **summarize.sh**. This
 
 If some error like *ImportError: No module named 'xmltodict'* or *AttributeError: module 'lib' has no attribute 'SSL_ST_INIT'* appear, maybe the following sequence of commands fix it.
 
-	sudo python3.5 -m pip install setuptools-rust
-	sudo python3.5 -m pip install pyOpenSSL
+	sudo python3 -m pip install setuptools-rust
+	sudo python3 -m pip install pyOpenSSL
 	sudo python3 -m pip install -r requirements.txt
 
 

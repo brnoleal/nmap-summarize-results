@@ -10,7 +10,12 @@ for file in sys.argv[1:]:
 
 	# read file
 	with open(file, 'r', encoding='utf-8') as f:
-		result = json.load(f)
+		# if can't read file, go to next
+		try:
+			result = json.load(f)
+		except:
+			print("{},Verifique o arquivo .json relacionado a este IP,".format(str(file.split('/')[-1].split('.json')[0])))
+			continue
 
 		# ip
 		try:
@@ -18,6 +23,7 @@ for file in sys.argv[1:]:
 				for addr in result['nmaprun']['host']['address']:
 					if addr['@addrtype'] == 'ipv4':
 						ip = addr['@addr']
+
 						break
 			except:
 				ip = result['nmaprun']['host']['address'][0]['@addr']
@@ -30,6 +36,7 @@ for file in sys.argv[1:]:
 					os_name = result['nmaprun']['host']['os']['osmatch'][0]['@name']				
 			except:
 				os_name = "Desconhecido"
+
 
 			# type
 			try:
@@ -89,5 +96,5 @@ for file in sys.argv[1:]:
 			else:
 				print("{},{}{},{}".format(ip, os_name, os_type, services))
 		except: 
-			print("{},Inativo,".format(file.split('/')[-1].split('-')[0]))
+			print("{},Verifique o arquivo .xml ou .json relacionado a este IP,".format(str(file.split('/')[-1].split('.json')[0])))
 
